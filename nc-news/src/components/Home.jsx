@@ -18,6 +18,12 @@ class Home extends React.Component {
     );
   }
 
+  // componentDidUpdate(prevProp) {
+  //   if (this.state.articles !== prevProp.articles) {
+  //     this.fetchArticle();
+  //   }
+  // }
+
   componentDidMount() {
     this.fetchArticle();
   }

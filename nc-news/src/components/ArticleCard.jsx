@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "@reach/router";
 
 const ArticleCard = props => {
   const { data } = props;
@@ -6,8 +7,7 @@ const ArticleCard = props => {
     <li>
       {" "}
       <br />
-      <div>{data.title}</div>
-      <div>{data.body}</div>
+      <Link to={`article/${data.article_id}`}>{data.title}</Link>
       <button>Vote</button>
     </li>
   );

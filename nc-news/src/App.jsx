@@ -4,6 +4,7 @@ import { Router } from "@reach/router";
 import Home from "./components/Home";
 import Header from "./components/Header";
 import NavBar from "./components/NavBar";
+import Article from "./components/Article";
 
 class App extends React.Component {
   state = {};
@@ -14,6 +15,7 @@ class App extends React.Component {
         <NavBar />
         <Router>
           <Home path="/" />
+          <Article path="article/:article_id" />
         </Router>
       </div>
     );
