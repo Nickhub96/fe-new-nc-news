@@ -9,7 +9,7 @@ class Article extends React.Component {
     comment: ""
   };
   render() {
-    console.log(this.state.comments);
+    // console.log(this.state.comments);
     return (
       <div>
         {this.state.article.title}
@@ -30,7 +30,9 @@ class Article extends React.Component {
         </form>
         <ul>
           {this.state.comments.map(comment => {
-            return <CommentCard key={comment.comment_id} data={comment} />;
+            return (
+              <CommentCard key={comment.comment_id || null} data={comment} />
+            );
           })}
         </ul>
       </div>
@@ -48,7 +50,18 @@ class Article extends React.Component {
     const { comment } = this.state;
     event.preventDefault();
     api.postComment(article_id, comment);
+    this.setState(currentState => {
+      return { comments: [...currentState.comments, currentState.comment] };
+    });
   };
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.comments !== prevState.comments) {
+      this.fetchArticleById();
+      this.fetchComments();
+      this.setState({ comment: "" });
+    }
+  }
 
   componentDidMount() {
     this.fetchArticleById();
@@ -58,7 +71,11 @@ class Article extends React.Component {
   fetchArticleById = () => {
     const { article_id } = this.props;
     api.getArticleById(article_id).then(article => {
-      this.setState({ article: article });
+      this.setState({
+        article: article
+      }); /*.catch(err => {
+        this.SetState({ err: err });*/
+      // });
     });
   };
 

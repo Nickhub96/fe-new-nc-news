@@ -24,15 +24,27 @@ export const getComments = article_id => {
       `https://be-server-project.herokuapp.com/api/articles/${article_id}/comments`
     )
     .then(({ data }) => {
-      console.log(data.comments);
+      // console.log(data.comments);
       return data.comments;
     });
 };
 
 export const postComment = (article_id, comment) => {
-  axios
+  return axios
     .post(
-      `https://be-server-project.herokuapp.com/api/articles/${article_id}/comments`
+      `https://be-server-project.herokuapp.com/api/articles/${article_id}/comments`,
+      { body: comment, username: "jessjelly" }
     )
-    .send({ body: comment });
+    .then(function(response) {
+      // console.log(response);
+    })
+    .catch(function(error) {
+      console.dir(error);
+    });
+};
+
+export const deleteComment = comment_id => {
+  return axios.delete(
+    `http://be-server-project.herokuapp.com/api/comments/${comment_id}`
+  );
 };
