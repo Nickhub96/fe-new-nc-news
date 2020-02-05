@@ -1,15 +1,19 @@
 import React from "react";
 import * as api from "./api";
 import CommentCard from "./CommentCard";
+import ErrorPage from "./ErrorPage";
 
 class Article extends React.Component {
   state = {
     article: [],
     comments: [],
-    comment: ""
+    comment: "",
+    err: null
   };
   render() {
-    // console.log(this.state.comments);
+    const { err } = this.state;
+    if (err) return <ErrorPage err={err} />;
+    else if (this.state.article.length === 0) return <h4>Loading...</h4>;
     return (
       <div>
         {this.state.article.title}
@@ -20,6 +24,7 @@ class Article extends React.Component {
           <label>
             Post a Comment
             <input
+              required
               type="text"
               name="comment"
               value={this.state.comment}
@@ -53,13 +58,13 @@ class Article extends React.Component {
     this.setState(currentState => {
       return { comments: [...currentState.comments, currentState.comment] };
     });
+    this.setState({ comment: "" });
   };
 
   componentDidUpdate(prevProps, prevState) {
     if (this.state.comments !== prevState.comments) {
       this.fetchArticleById();
       this.fetchComments();
-      this.setState({ comment: "" });
     }
   }
 
@@ -70,20 +75,28 @@ class Article extends React.Component {
 
   fetchArticleById = () => {
     const { article_id } = this.props;
-    api.getArticleById(article_id).then(article => {
-      this.setState({
-        article: article
-      }); /*.catch(err => {
-        this.SetState({ err: err });*/
-      // });
-    });
+    api
+      .getArticleById(article_id)
+      .then(article => {
+        this.setState({
+          article: article
+        });
+      })
+      .catch(err => {
+        this.setState({ err: err.response });
+      });
   };
 
   fetchComments = () => {
     const { article_id } = this.props;
-    api.getComments(article_id).then(comments => {
-      this.setState({ comments: comments });
-    });
+    api
+      .getComments(article_id)
+      .then(comments => {
+        this.setState({ comments: comments });
+      })
+      .catch(err => {
+        this.setState({ err: err.response });
+      });
   };
 }
 
