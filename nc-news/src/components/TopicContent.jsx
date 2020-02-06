@@ -1,6 +1,7 @@
 import React from "react";
 import * as api from "./api";
 import ErrorPage from "./ErrorPage";
+import ArticleCard from "./ArticleCard";
 
 class TopicContent extends React.Component {
   state = {
@@ -13,7 +14,16 @@ class TopicContent extends React.Component {
     const { slug } = this.props;
     if (err) return <ErrorPage err={err} />;
     else if (articles.length === 0) return <h4>Loading...</h4>;
-    return <h2>Welcome to {slug}</h2>;
+    return (
+      <section>
+        <h2>Welcome to {slug}</h2>
+        <ul>
+          {articles.map(article => {
+            return <ArticleCard key={article.article_id} data={article} />;
+          })}
+        </ul>
+      </section>
+    );
   }
 
   componentDidMount() {

@@ -2,6 +2,7 @@ import React from "react";
 import * as api from "./api";
 import CommentCard from "./CommentCard";
 import ErrorPage from "./ErrorPage";
+import { Button } from "antd";
 
 class Article extends React.Component {
   state = {
@@ -13,13 +14,13 @@ class Article extends React.Component {
   render() {
     const { err } = this.state;
     if (err) return <ErrorPage err={err} />;
-    else if (this.state.article.length === 0) return <h4>Loading...</h4>;
+    else if (this.state.article.length === 0)
+      return <Button>Loading...</Button>;
     return (
-      <div>
-        {this.state.article.title}
+      <section>
+        <h2> {this.state.article.title}</h2>
         <br />
-        {this.state.article.body}
-        <br />
+        <p className="articleBody">{this.state.article.body}</p>
         <form onSubmit={this.handleSubmit}>
           <label>
             Post a Comment
@@ -40,7 +41,7 @@ class Article extends React.Component {
             );
           })}
         </ul>
-      </div>
+      </section>
     );
   }
 

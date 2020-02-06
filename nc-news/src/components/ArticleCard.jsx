@@ -12,26 +12,41 @@ class ArticleCard extends React.Component {
     const { voteChange, err } = this.state;
     if (err) return <ErrorPage err={err} />;
     return (
-      <li>
-        {" "}
-        <br />
-        <Link to={`article/${data.article_id}`}>{data.title}</Link> {"  "}
-        <Link to={`users/${data.author}`}> written by{data.author}</Link>
-        <button
-          onClick={() => {
-            this.handleClick(1);
-          }}
-        >
-          UpVote
-        </button>
-        <p>{data.votes + voteChange} </p>
-        <button
-          onClick={() => {
-            this.handleClick(-1);
-          }}
-        >
-          DownVote
-        </button>
+      <li className="articleCard">
+        <section className="headofCard">
+          <p>{data.created_at}</p>
+          <h2>
+            <Link className="titlelink" to={`article/${data.article_id}`}>
+              {data.title}
+            </Link>
+          </h2>
+          <p>{data.topic}</p>
+        </section>{" "}
+        <p>
+          <Link className="author" to={`users/${data.author}`}>
+            {" "}
+            written by{data.author}
+          </Link>
+        </p>
+        <p>{data.comment_count} comments</p>
+        <section className="articleVote">
+          <button
+            className
+            onClick={() => {
+              this.handleClick(1);
+            }}
+          >
+            Like
+          </button>
+          <p>{data.votes + voteChange} </p>
+          <button
+            onClick={() => {
+              this.handleClick(-1);
+            }}
+          >
+            Dislike
+          </button>
+        </section>
       </li>
     );
   }

@@ -14,9 +14,12 @@ class CommentCard extends React.Component {
     if (err) return <ErrorPage err={err} />;
 
     return (
-      <li>
+      <li className="commentCard">
         <br />
-        {data.body}
+        <p>
+          {" "}
+          {data.author}: {data.body}
+        </p>
         <button
           onClick={() => {
             api.deleteComment(data.comment_id);
@@ -24,22 +27,24 @@ class CommentCard extends React.Component {
         >
           Delete Comment
         </button>
-        <button
-          onClick={() => {
-            this.handleClick(1);
-          }}
-        >
-          UpVote
-        </button>
-        <p>{data.votes} </p>
+        <section className="articleVote">
+          <button
+            onClick={() => {
+              this.handleClick(1);
+            }}
+          >
+            Like
+          </button>
+          <p>{data.votes} </p>
 
-        <button
-          onClick={() => {
-            this.handleClick(-1);
-          }}
-        >
-          DownVote
-        </button>
+          <button
+            onClick={() => {
+              this.handleClick(-1);
+            }}
+          >
+            Dislike
+          </button>
+        </section>
       </li>
     );
   }
