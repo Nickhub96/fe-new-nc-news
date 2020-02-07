@@ -17,7 +17,7 @@ class TopicContent extends React.Component {
     if (err) return <ErrorPage err={err} />;
     else if (articles.length === 0) return <h4>Loading...</h4>;
     return (
-      <section className="topic">
+      <section>
         <h2>{slug.toUpperCase()}</h2>
         <ul>
           {articles.map(article => {

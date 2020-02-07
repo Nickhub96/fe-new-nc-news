@@ -7,7 +7,7 @@ body {
   animation: color-me-in 5s infinite;
 }
 
-/* @keyframes color-me-in {
+@keyframes color-me-in {
   0% {
     background: #9a2727;
   }
@@ -18,7 +18,11 @@ body {
   100% {
     background: #9a2727;
   }
-} */
+}
+
+label {
+  color: white;
+}
 
 h1 {
   font-size: 60px;
@@ -124,7 +128,7 @@ p {
 h2 {
   font-size: 26px;
   font-weight: 500;
-  color: rgb(39, 31, 31);
+  color: white;
   text-decoration: none;
 }
 
@@ -182,9 +186,8 @@ h2 {
 
 .commentCard {
   list-style-type: none;
-  padding: 20px;
   margin: 20px;
-  border: solid;
+  border: solid rgb(93, 86, 86) 2px;
   height: 40%;
 }
 
@@ -195,9 +198,14 @@ input {
 
 .articleBody {
   border: solid rgb(93, 86, 86) 2px;
+  color: white;
   padding: 20px;
   margin: 20px;
   width: 88%;
+}
+
+.commentText {
+  color: white;
 }
 
 .article {

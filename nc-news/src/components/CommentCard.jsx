@@ -17,9 +17,9 @@ class CommentCard extends React.Component {
     return (
       <li className="commentCard">
         <br />
-        <p>{data.author}</p>
+        <p className="commentText">{data.author}</p>
         <br />
-        <p>{data.body}</p>
+        <p className="commentText">{data.body}</p>
         <button
           onClick={() => {
             if (user === data.author && loggedIn === true) {
@@ -37,7 +37,7 @@ class CommentCard extends React.Component {
           >
             Like
           </button>
-          <p>{data.votes} </p>
+          <p className="commentText">{data.votes} </p>
 
           <button
             onClick={() => {
