@@ -1,5 +1,5 @@
 import React from "react";
-import * as api from "./api";
+import * as api from "../api";
 import ErrorPage from "./ErrorPage";
 
 class User extends React.Component {

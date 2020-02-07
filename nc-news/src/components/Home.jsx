@@ -1,21 +1,31 @@
 import React from "react";
-import * as api from "./api";
+import * as api from "../api";
 import ArticleCard from "./ArticleCard";
 import ErrorPage from "./ErrorPage";
+import Login from "./login";
 
 class Home extends React.Component {
   state = {
     articles: [],
-    err: null
+    err: null,
+    loggedIn: false
   };
 
   render() {
-    const { err } = this.state;
-    console.log(err);
+    const { user } = this.props;
+    const { err, loggedIn } = this.state;
+
     if (err) return <ErrorPage err={err} />;
     else if (this.state.articles.length === 0) return <h4>Loading...</h4>;
     return (
       <div>
+        {/* <button
+          onClick={() => {
+            this.handleLogin(user);
+          }}
+        >
+          {loggedIn ? `logged in as ${user}` : `log in as ${user}`}
+        </button> */}
         <form>
           <select
             onChange={event => {
@@ -30,7 +40,14 @@ class Home extends React.Component {
         </form>
         <ul>
           {this.state.articles.map(article => {
-            return <ArticleCard key={article.article_id} data={article} />;
+            return (
+              <ArticleCard
+                loggedIn={loggedIn}
+                user={user}
+                key={article.article_id}
+                data={article}
+              />
+            );
           })}
         </ul>
       </div>
@@ -49,11 +66,10 @@ class Home extends React.Component {
       });
   };
 
-  // componentDidUpdate(prevProp, prevState) {
-  //   if (this.state.articles !== prevState.articles) {
-
-  //   }
-  // }
+  // handleLogin = () => {
+  //   const { loggedIn } = this.props;
+  //   this.setState({ loggedIn: !loggedIn });
+  // };
 
   componentDidMount() {
     this.fetchArticle();

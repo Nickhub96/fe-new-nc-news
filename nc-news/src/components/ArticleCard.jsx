@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "@reach/router";
-import * as api from "./api";
+import * as api from "../api";
 import ErrorPage from "./ErrorPage";
 class ArticleCard extends React.Component {
   state = {
@@ -8,22 +8,27 @@ class ArticleCard extends React.Component {
     err: null
   };
   render() {
-    const { data } = this.props;
+    const { data, user, loggedIn } = this.props;
     const { voteChange, err } = this.state;
+    console.log(data.title);
     if (err) return <ErrorPage err={err} />;
     return (
-      <li className="articleCard">
+      <li className={`article${data.topic}`}>
         <section className="headofCard">
           <p>{data.created_at}</p>
           <h2>
-            <Link className="titlelink" to={`article/${data.article_id}`}>
+            <Link
+              className={`titlelink${data.topic}`}
+              to={`/article/${data.article_id}`}
+              // `topics/coding/article:${data.article_id}`
+            >
               {data.title}
             </Link>
           </h2>
           <p>{data.topic}</p>
         </section>{" "}
         <p>
-          <Link className="author" to={`users/${data.author}`}>
+          <Link className={`author${data.topic}`} to={`users/${data.author}`}>
             {" "}
             written by{data.author}
           </Link>
@@ -31,15 +36,17 @@ class ArticleCard extends React.Component {
         <p>{data.comment_count} comments</p>
         <section className="articleVote">
           <button
+            disabled={voteChange}
             className
             onClick={() => {
-              this.handleClick(1);
+              loggedIn && this.handleClick(1);
             }}
           >
             Like
           </button>
           <p>{data.votes + voteChange} </p>
           <button
+            disabled={voteChange}
             onClick={() => {
               this.handleClick(-1);
             }}

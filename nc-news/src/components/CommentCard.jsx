@@ -1,6 +1,7 @@
 import React from "react";
-import * as api from "./api";
+import * as api from "../api";
 import ErrorPage from "./ErrorPage";
+import Voter from "./Voter";
 
 class CommentCard extends React.Component {
   state = {
@@ -8,7 +9,7 @@ class CommentCard extends React.Component {
     err: null
   };
   render() {
-    const { data } = this.props;
+    const { data, user, loggedIn } = this.props;
     const { err } = this.state;
 
     if (err) return <ErrorPage err={err} />;
@@ -16,13 +17,14 @@ class CommentCard extends React.Component {
     return (
       <li className="commentCard">
         <br />
-        <p>
-          {" "}
-          {data.author}: {data.body}
-        </p>
+        <p>{data.author}</p>
+        <br />
+        <p>{data.body}</p>
         <button
           onClick={() => {
-            api.deleteComment(data.comment_id);
+            if (user === data.author && loggedIn === true) {
+              api.deleteComment(data.comment_id);
+            }
           }}
         >
           Delete Comment
@@ -45,6 +47,7 @@ class CommentCard extends React.Component {
             Dislike
           </button>
         </section>
+        {/* <Voter handleClick={this.handleClick} data={data} /> */}
       </li>
     );
   }

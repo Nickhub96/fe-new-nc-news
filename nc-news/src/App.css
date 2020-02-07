@@ -3,16 +3,73 @@
 }
 
 body {
+  background: #9a2727;
+  animation: color-me-in 5s infinite;
 }
+
+/* @keyframes color-me-in {
+  0% {
+    background: #9a2727;
+  }
+
+  50% {
+    background: black;
+  }
+  100% {
+    background: #9a2727;
+  }
+} */
 
 h1 {
-  font-size: 50px;
+  font-size: 60px;
+  animation: h1 2s ease-out;
+  opacity: 1;
+  color: white;
+  animation: 0.8s shake infinite alternate;
 }
 
-.nav-bar {
+@keyframes shake {
+  0% {
+    transform: skewX(-15deg);
+  }
+  5% {
+    transform: skewX(15deg);
+  }
+  10% {
+    transform: skewX(-15deg);
+  }
+  15% {
+    transform: skewX(15deg);
+  }
+  20% {
+    transform: skewX(0deg);
+  }
+  100% {
+    transform: skewX(0deg);
+  }
+}
+
+nav a {
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 20px;
+  color: white;
+}
+nav {
+  margin-right: 30px;
 }
 
 select {
+  width: 120px;
+  height: 30px;
+  font-size: 15px;
+}
+.topiccard {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-self: center;
 }
 
 .route {
@@ -22,16 +79,46 @@ select {
   justify-content: space-between;
 }
 
+/* .topic {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-self: center;
+} */
+
 p {
   font-weight: 500;
 }
 
-.articleCard {
+.articlecoding {
   list-style-type: none;
   padding: 20px;
   margin: 20px;
   border: solid;
   height: 40%;
+  background-image: url("https://i.pinimg.com/736x/32/0b/63/320b6347b86f3e9ecdbf2a37c257e07c.jpg");
+  background-size: 100%;
+  color: white;
+}
+
+.articlecooking {
+  list-style-type: none;
+  padding: 20px;
+  margin: 20px;
+  border: solid;
+  height: 40%;
+  background-image: url("https://images.pond5.com/candy-confetti-explosion-left-footage-050048324_prevstill.jpeg");
+  background-size: 100%;
+}
+
+.articlefootball {
+  list-style-type: none;
+  padding: 20px;
+  margin: 20px;
+  border: solid;
+  height: 40%;
+  background-image: url("https://st3.depositphotos.com/1004870/15724/i/1600/depositphotos_157248600-stock-photo-many-tiny-footballs-raining.jpg");
+  background-size: 100%;
 }
 
 h2 {
@@ -41,12 +128,30 @@ h2 {
   text-decoration: none;
 }
 
-.titlelink {
+.titlelinkcoding {
+  text-decoration: none;
+  color: white;
+}
+.titlelinkfootball {
+  text-decoration: none;
+  color: rgb(49, 36, 36);
+}
+.titlelinkcooking {
   text-decoration: none;
   color: rgb(49, 36, 36);
 }
 
-.author {
+.authorcoding {
+  text-decoration: none;
+  color: white;
+}
+
+.authorfootball {
+  text-decoration: none;
+  color: rgb(49, 36, 36);
+}
+
+.authorcooking {
   text-decoration: none;
   color: rgb(49, 36, 36);
 }
@@ -71,7 +176,7 @@ h2 {
 }
 
 .headofCard p {
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 300px;
 }
 
@@ -97,7 +202,7 @@ input {
 
 .article {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }

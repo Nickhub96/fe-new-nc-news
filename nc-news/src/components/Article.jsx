@@ -1,5 +1,5 @@
 import React from "react";
-import * as api from "./api";
+import * as api from "../api";
 import CommentCard from "./CommentCard";
 import ErrorPage from "./ErrorPage";
 import { Button } from "antd";
@@ -9,16 +9,25 @@ class Article extends React.Component {
     article: [],
     comments: [],
     comment: "",
-    err: null
+    err: null,
+    loggedIn: false
   };
   render() {
-    const { err } = this.state;
+    const { err, loggedIn } = this.state;
+    const { user } = this.props;
     if (err) return <ErrorPage err={err} />;
     else if (this.state.article.length === 0)
       return <Button>Loading...</Button>;
     return (
-      <section>
+      <section className="article">
         <h2> {this.state.article.title}</h2>
+        <button
+          onClick={() => {
+            this.handleLogin(user);
+          }}
+        >
+          {loggedIn ? `logged in as ${user}` : `log in as ${user}`}
+        </button>
         <br />
         <p className="articleBody">{this.state.article.body}</p>
         <form onSubmit={this.handleSubmit}>
@@ -37,7 +46,12 @@ class Article extends React.Component {
         <ul>
           {this.state.comments.map(comment => {
             return (
-              <CommentCard key={comment.comment_id || null} data={comment} />
+              <CommentCard
+                user={user}
+                loggedIn={loggedIn}
+                key={comment.comment_id || null}
+                data={comment}
+              />
             );
           })}
         </ul>
@@ -49,6 +63,11 @@ class Article extends React.Component {
     const key = event.target.name;
     const value = event.target.value;
     this.setState({ [key]: value });
+  };
+
+  handleLogin = () => {
+    const { loggedIn } = this.state;
+    this.setState({ loggedIn: true || !loggedIn });
   };
 
   handleSubmit = event => {
