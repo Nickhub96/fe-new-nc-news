@@ -1,6 +1,7 @@
 import React from "react";
 import * as api from "../api";
 import ErrorPage from "./ErrorPage";
+import { Link } from "@reach/router";
 
 class CommentCard extends React.Component {
   state = {
@@ -16,7 +17,12 @@ class CommentCard extends React.Component {
     return (
       <li className="commentCard">
         <br />
-        <p className="commentText">{data.author}</p>
+
+        <Link className={"commentText"} to={`/users/${data.author}`}>
+          {" "}
+          {data.author}
+        </Link>
+
         <br />
         <p className="commentText">{data.body}</p>
         <button

@@ -2,7 +2,6 @@ import React from "react";
 import * as api from "../api";
 import ArticleCard from "./ArticleCard";
 import ErrorPage from "./ErrorPage";
-import Login from "./login";
 
 class Home extends React.Component {
   state = {

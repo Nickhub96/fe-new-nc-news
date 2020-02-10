@@ -1,17 +1,19 @@
 import React from "react";
 import * as api from "../api";
 import ErrorPage from "./ErrorPage";
+import ArticleCard from "./ArticleCard";
 
 class User extends React.Component {
   state = {
     articles: [],
     user: [],
+    loggedIn: false,
     err: null
   };
 
   render() {
     const { username } = this.props;
-    const { user, articles, err } = this.state;
+    const { user, articles, err, loggedIn } = this.state;
     if (err) return <ErrorPage err={err} />;
     else if (this.state.user.length === 0) return <h4>Loading...</h4>;
     return (
@@ -21,10 +23,16 @@ class User extends React.Component {
         <ul>
           {articles.map(article => {
             return (
-              <li key={article.article_id}>
-                {article.title}
-                {article.author}
-              </li>
+              <ArticleCard
+                loggedIn={loggedIn}
+                user={user}
+                key={article.article_id}
+                data={article}
+              />
+              // <li key={article.article_id}>
+              //   {article.title}
+              //   {article.author}
+              // </li>
             );
           })}
         </ul>

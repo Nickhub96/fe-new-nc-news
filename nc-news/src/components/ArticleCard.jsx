@@ -8,7 +8,7 @@ class ArticleCard extends React.Component {
     err: null
   };
   render() {
-    const { data, user, loggedIn } = this.props;
+    const { data, loggedIn } = this.props;
     const { voteChange, err } = this.state;
     if (err) return <ErrorPage err={err} />;
     return (
@@ -27,7 +27,7 @@ class ArticleCard extends React.Component {
           <p>{data.topic}</p>
         </section>{" "}
         <p>
-          <Link className={`author${data.topic}`} to={`users/${data.author}`}>
+          <Link className={`author${data.topic}`} to={`/users/${data.author}`}>
             {" "}
             written by{data.author}
           </Link>
