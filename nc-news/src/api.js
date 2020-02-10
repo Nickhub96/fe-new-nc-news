@@ -36,12 +36,7 @@ export const postComment = (article_id, comment) => {
       `https://be-server-project.herokuapp.com/api/articles/${article_id}/comments`,
       { body: comment, username: "jessjelly" }
     )
-    .then(function(response) {
-      // console.log(response);
-    })
-    .catch(function(error) {
-      console.dir(error);
-    });
+    .then(function(response) {});
 };
 
 export const deleteComment = comment_id => {
@@ -51,7 +46,6 @@ export const deleteComment = comment_id => {
 };
 
 export const incVote = (comment_id, voteDifference) => {
-  console.log(voteDifference);
   return axios.patch(
     `http://be-server-project.herokuapp.com/api/comments/${comment_id}`,
     {

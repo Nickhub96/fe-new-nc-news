@@ -35,7 +35,7 @@ class ArticleCard extends React.Component {
         <p>{data.comment_count} comments</p>
         <section className="articleVote">
           <button
-            // disabled={voteChange === 1}
+            disabled={voteChange === 1}
             className
             onClick={() => {
               loggedIn && this.handleClick(1);
@@ -45,7 +45,7 @@ class ArticleCard extends React.Component {
           </button>
           <p>{data.votes + voteChange} </p>
           <button
-            // disabled={voteChange === -1}
+            disabled={voteChange === -1}
             onClick={() => {
               this.handleClick(-1);
             }}

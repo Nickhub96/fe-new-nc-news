@@ -9,7 +9,7 @@ class CommentCard extends React.Component {
   };
   render() {
     const { data, user, loggedIn } = this.props;
-    const { err } = this.state;
+    const { err, voteChange } = this.state;
 
     if (err) return <ErrorPage err={err} />;
 
@@ -30,6 +30,7 @@ class CommentCard extends React.Component {
         </button>
         <section className="articleVote">
           <button
+            disabled={voteChange === 1}
             onClick={() => {
               this.handleClick(1);
             }}
@@ -39,6 +40,7 @@ class CommentCard extends React.Component {
           <p className="commentText">{data.votes} </p>
 
           <button
+            disabled={voteChange === -1}
             onClick={() => {
               this.handleClick(-1);
             }}
