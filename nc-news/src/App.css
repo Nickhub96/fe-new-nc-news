@@ -67,6 +67,7 @@ select {
   width: 120px;
   height: 30px;
   font-size: 15px;
+  color: white;
 }
 .topiccard {
   list-style-type: none;
@@ -98,6 +99,7 @@ p {
   list-style-type: none;
   padding: 20px;
   margin: 20px;
+  margin-left: 100px;
   border: solid;
   height: 40%;
   background-image: url("https://i.pinimg.com/736x/32/0b/63/320b6347b86f3e9ecdbf2a37c257e07c.jpg");
@@ -109,6 +111,7 @@ p {
   list-style-type: none;
   padding: 20px;
   margin: 20px;
+  margin-left: 100px;
   border: solid;
   height: 40%;
   background-image: url("https://images.pond5.com/candy-confetti-explosion-left-footage-050048324_prevstill.jpeg");
@@ -119,6 +122,7 @@ p {
   list-style-type: none;
   padding: 20px;
   margin: 20px;
+  margin-left: 100px;
   border: solid;
   height: 40%;
   background-image: url("https://st3.depositphotos.com/1004870/15724/i/1600/depositphotos_157248600-stock-photo-many-tiny-footballs-raining.jpg");
@@ -196,6 +200,33 @@ input {
   height: 50px;
 }
 
+.individualTopic {
+  list-style-type: none;
+  margin: 20px;
+  width: 500px;
+  border: solid rgb(93, 86, 86) 2px;
+  height: 100px;
+  color: white;
+}
+
+.topiccard {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  justify-content: flex-end;
+}
+
+.topicHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-right: 200px;
+}
+
+.login {
+  color: white;
+}
+
 .articleBody {
   border: solid rgb(93, 86, 86) 2px;
   color: white;
@@ -213,4 +244,11 @@ input {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+a {
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 20px;
+  color: white;
 }

@@ -19,13 +19,14 @@ class Home extends React.Component {
     else if (this.state.articles.length === 0) return <h4>Loading...</h4>;
     return (
       <div>
-        {/* <button
+        <button
+          className="login"
           onClick={() => {
             this.handleLogin(user);
           }}
         >
           {loggedIn ? `logged in as ${user}` : `log in as ${user}`}
-        </button> */}
+        </button>
         <form>
           <select
             onChange={event => {
@@ -64,6 +65,11 @@ class Home extends React.Component {
       .catch(err => {
         this.setState({ err: err.response });
       });
+  };
+
+  handleLogin = () => {
+    const { loggedIn } = this.state;
+    this.setState({ loggedIn: true || !loggedIn });
   };
 
   // handleLogin = () => {

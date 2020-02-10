@@ -1,7 +1,6 @@
 import React from "react";
 import * as api from "../api";
 import ErrorPage from "./ErrorPage";
-import Voter from "./Voter";
 
 class CommentCard extends React.Component {
   state = {

@@ -22,6 +22,7 @@ class Article extends React.Component {
       <section className="article">
         <h2> {this.state.article.title}</h2>
         <button
+          className="login"
           onClick={() => {
             this.handleLogin(user);
           }}
