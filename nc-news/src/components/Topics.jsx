@@ -5,7 +5,7 @@ import ErrorPage from "./ErrorPage";
 import Loading from "./Loading";
 
 class Topics extends React.Component {
-  state = { topics: [] };
+  state = { topics: [], err: null };
   render() {
     const { err, topics } = this.state;
 
