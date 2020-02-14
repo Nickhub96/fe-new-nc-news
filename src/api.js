@@ -41,13 +41,13 @@ export const postComment = (article_id, comment) => {
 
 export const deleteComment = comment_id => {
   return axios.delete(
-    `http://be-server-project.herokuapp.com/api/comments/${comment_id}`
+    `https://be-server-project.herokuapp.com/api/comments/${comment_id}`
   );
 };
 
 export const incVote = (comment_id, voteDifference) => {
   return axios.patch(
-    `http://be-server-project.herokuapp.com/api/comments/${comment_id}`,
+    `https://be-server-project.herokuapp.com/api/comments/${comment_id}`,
     {
       inc_votes: voteDifference
     }
@@ -63,7 +63,7 @@ export const incVoteArt = (article_id, voteDifference) => {
 
 export const getTopics = () => {
   return axios
-    .get("http://be-server-project.herokuapp.com/api/topics")
+    .get("https://be-server-project.herokuapp.com/api/topics")
     .then(({ data }) => {
       return data.topics;
     });
