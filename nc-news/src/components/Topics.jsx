@@ -2,20 +2,21 @@ import React from "react";
 import * as api from "../api";
 import TopicCard from "./TopicCard";
 import ErrorPage from "./ErrorPage";
+import Loading from "./Loading";
 
 class Topics extends React.Component {
   state = { topics: [] };
   render() {
-    const { err } = this.state;
+    const { err, topics } = this.state;
 
     if (err) return <ErrorPage err={err} />;
-    else if (this.state.topics.length === 0) return <h4>Loading...</h4>;
+    else if (topics.length === 0) return <Loading />;
     return (
-      <div>
+      <div className="topicPage">
         <h2 className="topicHeader">Topics</h2>
         <br />
         <ul className="topiccard">
-          {this.state.topics.map(topic => {
+          {topics.map(topic => {
             return <TopicCard key={topic.slug} topic={topic} />;
           })}
         </ul>

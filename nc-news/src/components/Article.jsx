@@ -2,62 +2,63 @@ import React from "react";
 import * as api from "../api";
 import CommentCard from "./CommentCard";
 import ErrorPage from "./ErrorPage";
-import { Button } from "antd";
+import Loading from "./Loading";
 
 class Article extends React.Component {
   state = {
     article: [],
     comments: [],
     comment: "",
-    err: null,
-    loggedIn: false
+    err: null
   };
   render() {
-    const { err, loggedIn } = this.state;
+    const { err, article, comment, comments } = this.state;
     const { user } = this.props;
     if (err) return <ErrorPage err={err} />;
-    else if (this.state.article.length === 0)
-      return <Button>Loading...</Button>;
-    return (
-      <section className="article">
-        <h2> {this.state.article.title}</h2>
-        <button
-          className="login"
-          onClick={() => {
-            this.handleLogin(user);
-          }}
-        >
-          {loggedIn ? `logged in as ${user}` : `log in as ${user}`}
-        </button>
-        <br />
-        <p className="articleBody">{this.state.article.body}</p>
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            Post a Comment
-            <input
-              required
-              type="text"
-              name="comment"
-              value={this.state.comment}
-              onChange={this.handleInput}
-            />
-          </label>
-          <button type="submit">Post</button>
-        </form>
-        <ul>
-          {this.state.comments.map(comment => {
-            return (
-              <CommentCard
-                user={user}
-                loggedIn={loggedIn}
-                key={comment.comment_id || null}
-                data={comment}
+    else if (this.state.article.length === 0) return <Loading />;
+    else if (user) {
+      return (
+        <section className="article">
+          <h2> {article.title}</h2>
+          <button
+          // className="loginbutton"
+          // className="login"
+          // onClick={() => {
+          //   this.handleLogin(user);
+          // }}
+          >
+            {user ? `logged in as ${user}` : `log in as ${user}`}
+          </button>
+          <br />
+          <p className="articleBody">{article.body}</p>
+          <form onSubmit={this.handleSubmit}>
+            <label>
+              Post a Comment
+              <input
+                required
+                type="text"
+                name="comment"
+                value={comment}
+                onChange={this.handleInput}
               />
-            );
-          })}
-        </ul>
-      </section>
-    );
+            </label>
+            <button type="submit">Post</button>
+          </form>
+          <ul>
+            {comments.map(comment => {
+              return (
+                <CommentCard
+                  user={user}
+                  // loggedIn={loggedIn}
+                  key={comment.comment_id || null}
+                  data={comment}
+                />
+              );
+            })}
+          </ul>
+        </section>
+      );
+    }
   }
 
   handleInput = event => {
@@ -66,10 +67,10 @@ class Article extends React.Component {
     this.setState({ [key]: value });
   };
 
-  handleLogin = () => {
-    const { loggedIn } = this.state;
-    this.setState({ loggedIn: true || !loggedIn });
-  };
+  // handleLogin = () => {
+  //   const { loggedIn } = this.state;
+  //   this.setState({ loggedIn: true || !loggedIn });
+  // };
 
   handleSubmit = event => {
     const { article_id } = this.props;

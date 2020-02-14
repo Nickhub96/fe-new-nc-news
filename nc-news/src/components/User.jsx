@@ -2,6 +2,7 @@ import React from "react";
 import * as api from "../api";
 import ErrorPage from "./ErrorPage";
 import ArticleCard from "./ArticleCard";
+import Loading from "./Loading";
 
 class User extends React.Component {
   state = {
@@ -15,11 +16,11 @@ class User extends React.Component {
     const { username } = this.props;
     const { user, articles, err, loggedIn } = this.state;
     if (err) return <ErrorPage err={err} />;
-    else if (this.state.user.length === 0) return <h4>Loading...</h4>;
+    else if (user.length === 0) return <Loading />;
     return (
       <div>
-        <h2>Your on {username}'s' page</h2>
-        <img src={user.avatar_url} alt="user profile pic" />
+        <h2 className="userHeader">Your on {username}'s' page</h2>
+        <img className="userImg" src={user.avatar_url} alt="user profile pic" />
         <ul>
           {articles.map(article => {
             return (
@@ -29,10 +30,6 @@ class User extends React.Component {
                 key={article.article_id}
                 data={article}
               />
-              // <li key={article.article_id}>
-              //   {article.title}
-              //   {article.author}
-              // </li>
             );
           })}
         </ul>

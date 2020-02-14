@@ -2,6 +2,7 @@ import React from "react";
 import * as api from "../api";
 import ErrorPage from "./ErrorPage";
 import ArticleCard from "./ArticleCard";
+import Loading from "./Loading";
 
 class TopicContent extends React.Component {
   state = {
@@ -13,10 +14,10 @@ class TopicContent extends React.Component {
     const { err, articles } = this.state;
     const { slug } = this.props;
     if (err) return <ErrorPage err={err} />;
-    else if (articles.length === 0) return <h4>Loading...</h4>;
+    else if (articles.length === 0) return <Loading />;
     return (
       <section>
-        <h2>{slug.toUpperCase()}</h2>
+        <h2 className="topicPageTitle">{slug.toUpperCase()}</h2>
         <ul>
           {articles.map(article => {
             return <ArticleCard key={article.article_id} data={article} />;

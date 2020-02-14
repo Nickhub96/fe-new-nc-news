@@ -15,8 +15,8 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <Header user={this.state.user} loggedIn={this.state.loggedIn} />
-        <NavBar user={this.state.user} loggedIn={this.state.loggedIn} />
+        <Header />
+        <NavBar />
         <Router className="route">
           <Home
             path="/"

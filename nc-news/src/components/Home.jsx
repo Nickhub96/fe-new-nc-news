@@ -2,6 +2,7 @@ import React from "react";
 import * as api from "../api";
 import ArticleCard from "./ArticleCard";
 import ErrorPage from "./ErrorPage";
+import Loading from "./Loading";
 
 class Home extends React.Component {
   state = {
@@ -12,34 +13,37 @@ class Home extends React.Component {
 
   render() {
     const { user } = this.props;
-    const { err, loggedIn } = this.state;
+    const { err, loggedIn, articles } = this.state;
 
     if (err) return <ErrorPage err={err} />;
-    else if (this.state.articles.length === 0) return <h4>Loading...</h4>;
+    else if (articles.length === 0) return <Loading />;
     return (
       <div>
         <button
-          className="login"
+          className="loginbutton"
           onClick={() => {
-            this.handleLogin(user);
+            this.handleLogin();
           }}
         >
           {loggedIn ? `logged in as ${user}` : `log in as ${user}`}
         </button>
-        <form>
-          <select
-            onChange={event => {
-              this.handleClick(event);
-            }}
-          >
-            Sort by
-            <option value="created_at">Date</option>
-            <option value="comment_count">Comments</option>
-            <option value="votes">Votes</option>
-          </select>
+        <form className="homeForm">
+          <label>
+            {" "}
+            Sort by:
+            <select
+              onChange={event => {
+                this.handleClick(event);
+              }}
+            >
+              <option value="created_at">Date</option>
+              <option value="comment_count">Comments</option>
+              <option value="votes">Votes</option>
+            </select>
+          </label>
         </form>
         <ul>
-          {this.state.articles.map(article => {
+          {articles.map(article => {
             return (
               <ArticleCard
                 loggedIn={loggedIn}

@@ -2,7 +2,7 @@ import React from "react";
 
 const ErrorPage = err => {
   if (err.default) {
-    return <p>"page not found"</p>;
+    return <h3>"Oops Page not found"</h3>;
   } else if (err) {
     const { msg } = err.err.data;
     const { status } = err.err;

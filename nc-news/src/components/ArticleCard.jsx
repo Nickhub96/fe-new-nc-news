@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "@reach/router";
 import * as api from "../api";
 import ErrorPage from "./ErrorPage";
+import Loading from "./Loading";
 class ArticleCard extends React.Component {
   state = {
     voteChange: 0,
@@ -11,20 +12,23 @@ class ArticleCard extends React.Component {
     const { data, loggedIn } = this.props;
     const { voteChange, err } = this.state;
     if (err) return <ErrorPage err={err} />;
+    if (data.length === 0) return <Loading />;
     return (
-      <li className={`article${data.topic}`}>
+      <li className={`articletopic`}>
         <section className="headofCard">
-          <p>{data.created_at}</p>
+          <p>{this.dateFormatter(data.created_at)}</p>
           <h2>
             <Link
-              className={`titlelink${data.topic}`}
+              className={`titlelink`}
               to={`/article/${data.article_id}`}
               // `topics/coding/article:${data.article_id}`
             >
               {data.title}
             </Link>
           </h2>
-          <p>{data.topic}</p>
+          <Link className={`titlelink`} to={`/topics/${data.topic}`}>
+            {data.topic.toUpperCase()}
+          </Link>
         </section>{" "}
         <p>
           <Link className={`author${data.topic}`} to={`/users/${data.author}`}>
@@ -32,7 +36,16 @@ class ArticleCard extends React.Component {
             written by{data.author}
           </Link>
         </p>
-        <p>{data.comment_count} comments</p>
+        <section className="commentCount">
+          <p>{data.comment_count}</p>
+          <img
+            className="commentIcon"
+            src="https://image.flaticon.com/icons/svg/1381/1381635.svg"
+            alt="comment icon"
+            height="22"
+            width="22"
+          />
+        </section>
         <section className="articleVote">
           <button
             disabled={voteChange === 1}
@@ -47,7 +60,7 @@ class ArticleCard extends React.Component {
           <button
             disabled={voteChange === -1}
             onClick={() => {
-              this.handleClick(-1);
+              loggedIn && this.handleClick(-1);
             }}
           >
             Dislike
@@ -70,6 +83,13 @@ class ArticleCard extends React.Component {
         };
       });
     });
+  };
+
+  dateFormatter = date => {
+    const yymmdd = date.slice(0, 10);
+    const time = date.slice(11, 16);
+    const newDate = yymmdd + " " + time;
+    return newDate;
   };
 }
 

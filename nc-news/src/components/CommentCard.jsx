@@ -2,6 +2,7 @@ import React from "react";
 import * as api from "../api";
 import ErrorPage from "./ErrorPage";
 import { Link } from "@reach/router";
+import Loading from "./Loading";
 
 class CommentCard extends React.Component {
   state = {
@@ -9,11 +10,11 @@ class CommentCard extends React.Component {
     err: null
   };
   render() {
-    const { data, user, loggedIn } = this.props;
+    const { data, user } = this.props;
     const { err, voteChange } = this.state;
 
     if (err) return <ErrorPage err={err} />;
-
+    if (data.length === 0) return <Loading />;
     return (
       <li className="commentCard">
         <br />
@@ -25,15 +26,23 @@ class CommentCard extends React.Component {
 
         <br />
         <p className="commentText">{data.body}</p>
-        <button
-          onClick={() => {
-            if (user === data.author && loggedIn === true) {
-              api.deleteComment(data.comment_id);
-            }
-          }}
-        >
-          Delete Comment
-        </button>
+        <section className="deleteButton">
+          <button
+            onClick={() => {
+              if (user === data.author) {
+                api.deleteComment(data.comment_id);
+              }
+            }}
+          >
+            Delete
+            <img
+              src="https://img.icons8.com/material-outlined/24/000000/delete-trash.png"
+              alt="rubbish icon"
+              height="26"
+              width="22"
+            ></img>
+          </button>
+        </section>
         <section className="articleVote">
           <button
             disabled={voteChange === 1}

@@ -1,13 +1,15 @@
 .App {
   text-align: center;
+  font-family: "Source Sans Pro", sans-serif;
 }
 
 body {
   background: #9a2727;
   animation: color-me-in 5s infinite;
+  font-family: "Source Sans Pro", sans-serif;
 }
 
-@keyframes color-me-in {
+/* @keyframes color-me-in {
   0% {
     background: #9a2727;
   }
@@ -18,10 +20,19 @@ body {
   100% {
     background: #9a2727;
   }
-}
+} */
 
 label {
   color: white;
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+.userHeader {
+  margin-left: 470px;
+}
+
+.userImg {
+  margin-left: 450px;
 }
 
 h1 {
@@ -30,6 +41,11 @@ h1 {
   opacity: 1;
   color: white;
   animation: 0.8s shake infinite alternate;
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+.deleteButton {
+  background-color: transparent;
 }
 
 @keyframes shake {
@@ -58,16 +74,42 @@ nav a {
   font-weight: 500;
   font-size: 20px;
   color: white;
+  font-family: "Source Sans Pro", sans-serif;
 }
 nav {
+  display: flex;
+  flex-direction: center;
+  justify-content: center;
   margin-right: 30px;
+  font-family: "Source Sans Pro", sans-serif;
+  margin-left: 40px;
+}
+
+.loginbutton {
+  margin-left: 420px;
+}
+
+.homeForm {
+  margin-left: 390px;
 }
 
 select {
   width: 120px;
   height: 30px;
   font-size: 15px;
-  color: white;
+  color: black;
+  background-color: white;
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+.commentIcon {
+  margin-top: 15px;
+}
+.commentCount {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-family: "Source Sans Pro", sans-serif;
 }
 .topiccard {
   list-style-type: none;
@@ -75,6 +117,7 @@ select {
   flex-direction: row;
   justify-content: center;
   align-self: center;
+  font-family: "Source Sans Pro", sans-serif;
 }
 
 .route {
@@ -82,6 +125,7 @@ select {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
+  font-family: "Source Sans Pro", sans-serif;
 }
 
 /* .topic {
@@ -93,40 +137,25 @@ select {
 
 p {
   font-weight: 500;
-}
-
-.articlecoding {
-  list-style-type: none;
-  padding: 20px;
-  margin: 20px;
-  margin-left: 100px;
-  border: solid;
-  height: 40%;
-  background-image: url("https://i.pinimg.com/736x/32/0b/63/320b6347b86f3e9ecdbf2a37c257e07c.jpg");
-  background-size: 100%;
+  font-family: "Source Sans Pro", sans-serif;
   color: white;
 }
 
-.articlecooking {
-  list-style-type: none;
-  padding: 20px;
-  margin: 20px;
-  margin-left: 100px;
-  border: solid;
-  height: 40%;
-  background-image: url("https://images.pond5.com/candy-confetti-explosion-left-footage-050048324_prevstill.jpeg");
-  background-size: 100%;
+.loadingButton {
+  display: flex;
+  flex-direction: center;
+  justify-content: center;
 }
 
-.articlefootball {
+.articletopic {
   list-style-type: none;
   padding: 20px;
   margin: 20px;
-  margin-left: 100px;
+  margin-left: 250px;
   border: solid;
   height: 40%;
-  background-image: url("https://st3.depositphotos.com/1004870/15724/i/1600/depositphotos_157248600-stock-photo-many-tiny-footballs-raining.jpg");
-  background-size: 100%;
+  width: 100%;
+  font-family: "Source Sans Pro", sans-serif;
 }
 
 h2 {
@@ -134,46 +163,45 @@ h2 {
   font-weight: 500;
   color: white;
   text-decoration: none;
+  font-family: "Source Sans Pro", sans-serif;
 }
 
-.titlelinkcoding {
+.titlelink {
   text-decoration: none;
-  color: white;
-}
-.titlelinkfootball {
-  text-decoration: none;
-  color: rgb(49, 36, 36);
-}
-.titlelinkcooking {
-  text-decoration: none;
-  color: rgb(49, 36, 36);
+  /* color: white; */
+  font-family: "Source Sans Pro", sans-serif;
 }
 
 .authorcoding {
   text-decoration: none;
-  color: white;
+  /* color: white; */
+  font-family: "Source Sans Pro", sans-serif;
 }
 
 .authorfootball {
   text-decoration: none;
-  color: rgb(49, 36, 36);
+  /* color: rgb(49, 36, 36); */
+  font-family: "Source Sans Pro", sans-serif;
 }
 
 .authorcooking {
   text-decoration: none;
-  color: rgb(49, 36, 36);
+  /* color: rgb(49, 36, 36); */
+  font-family: "Source Sans Pro", sans-serif;
 }
 
 .articleVote {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  font-family: "Source Sans Pro", sans-serif;
 }
 
 .articleVote button {
   height: 30px;
   border-radius: 20px;
   margin: 10px;
+  font-family: "Source Sans Pro", sans-serif;
 }
 
 .headofCard {
@@ -181,62 +209,89 @@ h2 {
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
+  font-family: "Source Sans Pro", sans-serif;
 }
 
 .headofCard p {
   font-size: 18px;
   font-weight: 300px;
+  font-family: "Source Sans Pro", sans-serif;
 }
 
 .commentCard {
   list-style-type: none;
   margin: 20px;
-  border: solid rgb(93, 86, 86) 2px;
+  border: solid black;
   height: 40%;
+  font-family: "Source Sans Pro", sans-serif;
 }
 
 input {
   width: 300px;
   height: 50px;
+  font-weight: 500;
+  font-size: 15px;
+  font-family: "Source Sans Pro", sans-serif;
 }
 
+.topicPage {
+  width: 100%;
+}
 .individualTopic {
   list-style-type: none;
   margin: 20px;
   width: 500px;
-  border: solid rgb(93, 86, 86) 2px;
+  border: solid black;
   height: 100px;
   color: white;
+  font-family: "Source Sans Pro", sans-serif;
 }
 
 .topiccard {
   display: flex;
   flex-direction: row;
-  width: 80%;
+  width: 100%;
   justify-content: flex-end;
+  font-family: "Source Sans Pro", sans-serif;
 }
 
 .topicHeader {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin-right: 200px;
+  font-family: "Source Sans Pro", sans-serif;
 }
 
-.login {
-  color: white;
+.topicPageTitle {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-left: 560px;
+  font-family: "Source Sans Pro", sans-serif;
 }
+
+/* .login {
+  color: black;
+  margin-left: 50px;
+  height: 35px;
+  width: 90px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-family: "Source Sans Pro", sans-serif;
+} */
 
 .articleBody {
-  border: solid rgb(93, 86, 86) 2px;
-  color: white;
+  border: solid black;
+  /* color: white; */
   padding: 20px;
   margin: 20px;
   width: 88%;
+  font-family: "Source Sans Pro", sans-serif;
 }
 
 .commentText {
-  color: white;
+  /* color: white; */
+  font-family: "Source Sans Pro", sans-serif;
 }
 
 .article {
@@ -244,6 +299,7 @@ input {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-family: "Source Sans Pro", sans-serif;
 }
 
 a {
@@ -251,4 +307,5 @@ a {
   font-weight: 500;
   font-size: 20px;
   color: white;
+  font-family: "Source Sans Pro", sans-serif;
 }
