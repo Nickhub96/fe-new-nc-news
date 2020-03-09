@@ -10,8 +10,6 @@ export const getArticles = (slug, value, username) => {
     });
 };
 
-export const patchArticles = () => {};
-
 export const getArticleById = article_id => {
   return axios
     .get(`https://be-server-project.herokuapp.com/api/articles/${article_id}`)

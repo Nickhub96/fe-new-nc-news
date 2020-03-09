@@ -74,6 +74,7 @@ nav a {
   font-weight: 500;
   font-size: 20px;
   color: white;
+  margin-left: 5px;
   font-family: "Source Sans Pro", sans-serif;
 }
 nav {
@@ -82,15 +83,15 @@ nav {
   justify-content: center;
   margin-right: 30px;
   font-family: "Source Sans Pro", sans-serif;
-  margin-left: 40px;
+  /* margin-left: 40px; */
 }
 
 .loginbutton {
-  margin-left: 420px;
+  margin-left: 280px;
 }
 
 .homeForm {
-  margin-left: 390px;
+  margin-left: 230px;
 }
 
 select {
@@ -118,6 +119,7 @@ select {
   justify-content: center;
   align-self: center;
   font-family: "Source Sans Pro", sans-serif;
+  margin-right: 60px;
 }
 
 .route {
@@ -151,7 +153,7 @@ p {
   list-style-type: none;
   padding: 20px;
   margin: 20px;
-  margin-left: 250px;
+  margin-left: 100px;
   border: solid;
   height: 40%;
   width: 100%;
@@ -266,7 +268,7 @@ input {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin-left: 560px;
+  margin-left: 430px;
   font-family: "Source Sans Pro", sans-serif;
 }
 

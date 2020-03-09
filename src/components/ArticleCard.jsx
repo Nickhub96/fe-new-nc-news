@@ -13,6 +13,7 @@ class ArticleCard extends React.Component {
     const { voteChange, err } = this.state;
     if (err) return <ErrorPage err={err} />;
     if (data.length === 0) return <Loading />;
+    console.log(voteChange);
     return (
       <li className={`articletopic`}>
         <section className="headofCard">
